@@ -1,4 +1,5 @@
 #TODO Tasks list
 
-- Create repository
+- [OK] Create repository
+- [OK] Install most used libraries
 - Create mock design using Figma
