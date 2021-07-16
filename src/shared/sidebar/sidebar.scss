@@ -1,0 +1,38 @@
+@import '../../assets/styles/colors.scss';
+
+.app-sidebar {
+  width: 250px;
+  height: 100vh;
+  color: $label;
+  border-right: 1px solid $input;
+
+  ul {
+    list-style: none;
+    padding: 0;
+
+    li {
+      display: flex;
+      align-items: center;
+      padding: 15px 0px 15px 30px;
+      border-radius: 5px;
+
+      &:hover {
+        background-color: #e5ebfe;
+        cursor: pointer;
+      }
+
+      &.option-active {
+        color: $primary;
+
+        .option-label {
+          border-right: 4px solid $primary;
+          border-radius: 2px;
+        }
+      }
+
+      .fas {
+        width: 30px;
+      }
+    }
+  }
+}
