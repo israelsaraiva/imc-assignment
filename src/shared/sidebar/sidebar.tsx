@@ -21,13 +21,11 @@ export default function Sidebar() {
 
   return (
     <aside className="app-sidebar">
-      <div>MENU</div>
-
-      <br />
+      <div className="p-4 fw-bold">MENU</div>
 
       <ul>
         {menuOptions.map((option, index) => (
-          <li key="index" className={option.active ? 'option-active' : ''}>
+          <li key={index} className={option.active ? 'option-active' : ''}>
             <i className={`fas ${option.fortAwesomeIconClass}`} />
             <div className="option-label flex-fill">{option.label}</div>
           </li>

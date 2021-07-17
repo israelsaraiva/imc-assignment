@@ -1,0 +1,41 @@
+@import '../../../assets/styles/general';
+
+.dashboard-page-topBar {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid $input;
+  padding-bottom: 30px;
+  color: $ash;
+
+  .avatar-container {
+    position: relative;
+    width: 60px;
+    height: 60px;
+    border-radius: 50px;
+    border: 2px solid $primary;
+
+    .user-avatar {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translateX(-50%) translateY(-50%);
+      width: 50px;
+      height: 50px;
+      overflow: hidden;
+      border-radius: 50px;
+
+      img {
+        width: 100%;
+      }
+    }
+  }
+
+  .welcome-message {
+    @include font-body-large;
+    font-weight: bold;
+  }
+
+  .user-name {
+    @include font-body-large;
+  }
+}

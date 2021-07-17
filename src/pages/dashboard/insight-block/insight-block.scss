@@ -1,0 +1,25 @@
+@import '../../../assets/styles/general';
+
+.insight-block {
+  margin: 20px 0;
+  padding-left: 30px;
+  border-left: 1px solid $input;
+
+  &-label {
+    @include font-body-xsmall;
+    color: $label;
+    font-weight: 500;
+  }
+
+  &-value {
+    @include font-body-large;
+    color: $ash;
+    font-weight: bold;
+  }
+
+  &-description {
+    @include font-body-xsmall;
+    color: $placeholder;
+    font-weight: 500;
+  }
+}

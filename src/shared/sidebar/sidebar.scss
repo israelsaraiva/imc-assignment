@@ -1,4 +1,4 @@
-@import '../../assets/styles/colors.scss';
+@import '../../assets/styles/general.scss';
 
 .app-sidebar {
   width: 250px;
@@ -15,6 +15,7 @@
       align-items: center;
       padding: 15px 0px 15px 30px;
       border-radius: 5px;
+      @include font-body-small;
 
       &:hover {
         background-color: #e5ebfe;

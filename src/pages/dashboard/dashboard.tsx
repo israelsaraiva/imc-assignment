@@ -2,19 +2,29 @@ import './dashboard.scss';
 
 import React from 'react';
 
-const userAvatar = 'https://media-exp1.licdn.com/dms/image/C4E03AQGNbnck8RgC1A/profile-displayphoto-shrink_400_400/0/1593830255651?e=1631750400&v=beta&t=CweCRdPJapZyhTUozDJRbv1JzBouwLMD0Md8hv7_FZM';
+import InsightBlock from './insight-block/insight-block';
+import TopBar from './top-bar/top-bar';
+import LineChart from './line-chart/line-chart';
 
 export default function DashboardPage() {
+  const insights = [1, 2, 3, 4];
   return (
     <div className="dashboard-page">
-      <div className="dashboard-page-top">
-        <div className="avatar-container me-3">
-          <div className="user-avatar">
-            <img src={userAvatar} alt="user" />
+      <TopBar />
+
+      <div className="dashboard-page-insights row">
+        {insights.map((insight) => (
+          <InsightBlock key={insight} className="col-sm-3" />
+        ))}
+      </div>
+
+      <div className="dashboard-page-charts">
+        <div>
+          <div className="subtitle">Guide Performance</div>
+          <div className="dashboard-page-charts-container">
+            <LineChart />
           </div>
         </div>
-        <div className="me-2">Welcome Back,</div>
-        <div>Israel Saraiva</div>
       </div>
     </div>
   );
