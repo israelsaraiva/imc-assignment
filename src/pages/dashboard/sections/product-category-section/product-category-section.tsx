@@ -5,22 +5,31 @@ import BarChart from 'pages/dashboard/components/charts/bar-chart';
 import React, { useEffect, useState } from 'react';
 import useGeneralService from 'services/general.service';
 import ToggleSelector, { ToggleOption } from 'shared/toggle-selector/toggle-selector';
+import Spinner from 'shared/spinner/spinner';
 
 const toggleOptions = [
   { key: 'total_revenue', label: 'Total revenue' },
-  { key: 'total_margin', label: 'Total margin' },
+  { key: 'total_margin', label: 'Total margin' }
 ];
 
 export default function ProductCategorySection() {
   const generalService = useGeneralService();
 
   const [productsCategories, setProductsCategories] = useState<BestProductsCategoriesModel[]>([]);
-  const [productCategoryOption, setProductCategoryOption] = useState<ToggleOption>(toggleOptions[0]);
+  const [productCategoryOption, setProductCategoryOption] = useState<ToggleOption>(
+    toggleOptions[0]
+  );
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    generalService.getBestProductsCategories().then((res) => {
-      setProductsCategories(formatBarChartData(res.data));
-    });
+    setLoading(true);
+
+    generalService
+      .getBestProductsCategories()
+      .then((res) => {
+        setProductsCategories(formatBarChartData(res.data));
+      })
+      .finally(() => setLoading(false));
   }, []);
 
   function formatBarChartData(data: BestProductsCategoriesModel[]) {
@@ -39,7 +48,13 @@ export default function ProductCategorySection() {
       </div>
 
       <div className="product-category-section-container">
-        <BarChart data={productsCategories} indexBy="category_name" keys={[productCategoryOption.label]} />
+        <Spinner active={loading} />
+
+        <BarChart
+          data={productsCategories}
+          indexBy="category_name"
+          keys={[productCategoryOption.label]}
+        />
       </div>
     </div>
   );

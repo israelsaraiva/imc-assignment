@@ -17,12 +17,18 @@ export default function CustomersPage() {
   const [customers, setCustomers] = useState<BestCustomerModel[]>([]);
 
   const [toggleSelected, setToggleSelected] = useState<ToggleOption>(toggleOptions[0]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    generalService.getBestCustomersRevenues().then((res) => {
-      const data = formatData(res.data);
-      setCustomers(data);
-    });
+    setLoading(true);
+
+    generalService
+      .getBestCustomersRevenues()
+      .then((res) => {
+        const data = formatData(res.data);
+        setCustomers(data);
+      })
+      .finally(() => setLoading(false));
   }, []);
 
   function formatData(data: BestCustomerModel[]) {
@@ -51,7 +57,7 @@ export default function CustomersPage() {
         <ToggleSelector options={toggleOptions} onToggle={setToggleSelected} />
       </div>
 
-      <DataTable data={customers} structure={structure} />
+      <DataTable data={customers} structure={structure} loading={loading} />
     </div>
   );
 }

@@ -1,6 +1,7 @@
 @import '../../assets/styles/general';
 
 .data-table {
+  position: relative;
   margin-top: 2rem;
   color: $ash;
 
@@ -17,6 +18,11 @@
         color: $label;
         padding: 10px 0;
         text-transform: uppercase;
+
+        @include mobile {
+          line-height: 18px;
+          font-size: 10px;
+        }
       }
     }
 
@@ -28,6 +34,10 @@
       td {
         @include font-body-small;
         padding: 15px 0;
+
+        @include mobile {
+          font-size: 12px;
+        }
       }
     }
 

@@ -1,6 +1,6 @@
 import './sidebar.scss';
 
-import React, { useCallback, useState } from 'react';
+import React, { useCallback } from 'react';
 import AppPages from 'pages/pages.enum';
 import { useHistory, useLocation } from 'react-router-dom';
 
@@ -9,18 +9,18 @@ const menuOptions = [
     active: true,
     label: 'Dashboard',
     fortAwesomeIconClass: 'fa-tachometer-alt',
-    page: AppPages.Dashboard,
+    page: AppPages.Dashboard
   },
   {
     label: 'Invoices',
     fortAwesomeIconClass: 'fa-file-invoice-dollar',
-    page: AppPages.Invoices,
+    page: AppPages.Invoices
   },
   {
     label: 'Customers',
     fortAwesomeIconClass: 'fa-users',
-    page: AppPages.Customers,
-  },
+    page: AppPages.Customers
+  }
 ];
 
 export default function Sidebar() {
@@ -39,7 +39,10 @@ export default function Sidebar() {
 
       <ul>
         {menuOptions.map((option, index) => (
-          <li key={index} className={menuActive(option) ? 'option-active' : ''} onClick={() => navigateTo(option.page)}>
+          <li
+            key={index}
+            className={menuActive(option) ? 'option-active' : ''}
+            onClick={() => navigateTo(option.page)}>
             <i className={`fas ${option.fortAwesomeIconClass}`} />
             <div className="option-label flex-fill">{option.label}</div>
           </li>

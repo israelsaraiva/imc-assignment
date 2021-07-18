@@ -4,7 +4,7 @@
 - [OK] Install most used libraries
 - [OK] Create mock design using Figma
 
-- Apply responsiveness to the page
+- [OK] Apply responsiveness to the page
 
 - [OK] Bar Chart => present the total revenues per products categories (or total margin, depending
   on switcher value).
@@ -24,9 +24,10 @@
   - [OK] List of our best customers, with their name, their region, the number of invoices at their
     names and the total revenue (or total margin, depending on switcher value).
 
-- Populate insight blocks with real data
 - [OK] Add pages navigation
 
 ====== SUGGESTED IMPROVEMENTS =====
 
 - Make just the body of data table scrollable
+- Create a toggle sidebar button for tablet and mobile views
+- Populate insight blocks with real data

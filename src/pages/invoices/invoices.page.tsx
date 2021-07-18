@@ -1,7 +1,7 @@
 import './invoices.page.scss';
 
 import { InvoiceModel } from 'models/invoice.model';
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import useGeneralService from 'services/general.service';
 import DataTable, { DataTableStructure } from 'shared/data-table/data-table';
 import ToggleSelector, { ToggleOption } from 'shared/toggle-selector/toggle-selector';
@@ -17,12 +17,18 @@ export default function InvoicesPage() {
   const [invoices, setInvoices] = useState<InvoiceModel[]>([]);
 
   const [toggleSelected, setToggleSelected] = useState<ToggleOption>(toggleOptions[0]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    generalService.getInvoices().then((res) => {
-      const data = formatData(res.data);
-      setInvoices(data);
-    });
+    setLoading(true);
+
+    generalService
+      .getInvoices()
+      .then((res) => {
+        const data = formatData(res.data);
+        setInvoices(data);
+      })
+      .finally(() => setLoading(false));
   }, []);
 
   function formatData(data: InvoiceModel[]) {
@@ -53,7 +59,7 @@ export default function InvoicesPage() {
         <ToggleSelector options={toggleOptions} onToggle={setToggleSelected} />
       </div>
 
-      <DataTable data={invoices} structure={structure} />
+      <DataTable data={invoices} structure={structure} loading={loading} />
     </div>
   );
 }

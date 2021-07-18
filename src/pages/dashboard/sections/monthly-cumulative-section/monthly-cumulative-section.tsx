@@ -5,25 +5,23 @@ import { RevenueModel } from 'models/revenue.model';
 import LineChart from 'pages/dashboard/components/charts/line-chart';
 import React, { useEffect, useState } from 'react';
 import useGeneralService from 'services/general.service';
-import ToggleSelector, { ToggleOption } from 'shared/toggle-selector/toggle-selector';
-
-const toggleOptions = [
-  { key: 'total_revenue', label: 'Cumulative revenue' },
-  { key: 'total_margin', label: 'Cumulative margin' }
-];
+import Spinner from 'shared/spinner/spinner';
 
 export default function MonthlyCumulativeSection() {
   const generalService = useGeneralService();
 
-  const [productCategoryOption, setProductCategoryOption] = useState<ToggleOption>(
-    toggleOptions[0]
-  );
   const [chartData, setChartData] = useState<Serie[]>([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    generalService.getRevenues('monthly').then((res) => {
-      formatChartData(res.data);
-    });
+    setLoading(true);
+
+    generalService
+      .getRevenues('monthly')
+      .then((res) => {
+        formatChartData(res.data);
+      })
+      .finally(() => setLoading(false));
   }, []);
 
   function formatChartData(data: RevenueModel[]) {
@@ -60,6 +58,7 @@ export default function MonthlyCumulativeSection() {
       </div>
 
       <div className="monthly-cumulative-section-container">
+        <Spinner active={loading} />
         <LineChart data={chartData} />
       </div>
     </div>

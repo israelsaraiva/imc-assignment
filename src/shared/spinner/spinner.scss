@@ -1,0 +1,22 @@
+@import '../../assets/styles/general';
+
+.app-spinner {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: $offWhite;
+  opacity: 0.9;
+  z-index: 999;
+  display: none;
+
+  &.active {
+    display: block;
+  }
+
+  &-container {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+  }
+}

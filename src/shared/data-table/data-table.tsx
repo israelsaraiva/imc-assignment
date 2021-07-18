@@ -2,6 +2,7 @@ import './data-table.scss';
 
 import { InvoiceModel } from 'models/invoice.model';
 import React, { useEffect, useMemo, useState } from 'react';
+import Spinner from 'shared/spinner/spinner';
 
 export interface DataTableStructure {
   header: string;
@@ -13,9 +14,10 @@ export interface DataTableStructure {
 type DataTableProps = {
   data: any;
   structure: DataTableStructure[];
+  loading?: boolean;
 };
 
-export default function DataTable({ data, structure }: DataTableProps) {
+export default function DataTable({ data, structure, loading }: DataTableProps) {
   const pageSize = 15;
 
   const [filteredData, setFilteredData] = useState<InvoiceModel[]>([]);
@@ -31,6 +33,8 @@ export default function DataTable({ data, structure }: DataTableProps) {
 
   return (
     <div className="data-table">
+      <Spinner active={!!loading} />
+
       <table>
         <thead>
           <tr>
