@@ -3,6 +3,7 @@ import './invoices.page.scss';
 import { InvoiceModel } from 'models/invoice.model';
 import React, { useEffect, useMemo, useState } from 'react';
 import useGeneralService from 'services/general.service';
+import DataTable, { DataTableStructure } from 'shared/data-table/data-table';
 import ToggleSelector, { ToggleOption } from 'shared/toggle-selector/toggle-selector';
 
 const toggleOptions = [
@@ -13,12 +14,7 @@ const toggleOptions = [
 export default function InvoicesPage() {
   const generalService = useGeneralService();
 
-  const pageSize = 15;
-
   const [invoices, setInvoices] = useState<InvoiceModel[]>([]);
-  const [filteredData, setFilteredData] = useState<InvoiceModel[]>([]);
-  const [currentPage, setCurrentPage] = useState(0);
-  const [pagesAmount, setPagesAmount] = useState(0);
 
   const [toggleSelected, setToggleSelected] = useState<ToggleOption>(toggleOptions[0]);
 
@@ -26,13 +22,8 @@ export default function InvoicesPage() {
     generalService.getInvoices().then((res) => {
       const data = formatData(res.data);
       setInvoices(data);
-      setPagesAmount(Math.ceil(data.length / pageSize));
     });
   }, []);
-
-  useEffect(() => {
-    setFilteredData(invoices.slice(currentPage * pageSize, (currentPage + 1) * pageSize));
-  }, [invoices, currentPage]);
 
   function formatData(data: InvoiceModel[]) {
     data.forEach((item) => {
@@ -43,7 +34,17 @@ export default function InvoicesPage() {
     return data.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
   }
 
-  const pages = useMemo(() => new Array(pagesAmount).fill(''), [pagesAmount]);
+  const structure: DataTableStructure[] = [
+    { header: 'ID', beforeValue: '#', valueKey: 'id' },
+    { header: 'DATE', valueKey: 'date' },
+    { header: 'CUSTOMER NAME', valueKey: 'customer_name' },
+    { header: 'REGION', valueKey: 'region' },
+    {
+      header: toggleSelected.label,
+      beforeValue: '$',
+      valueFunction: (invoice) => invoice[toggleSelected.key]
+    }
+  ];
 
   return (
     <div className="invoices-page">
@@ -52,52 +53,7 @@ export default function InvoicesPage() {
         <ToggleSelector options={toggleOptions} onToggle={setToggleSelected} />
       </div>
 
-      <table id="invoices-table">
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>DATE</th>
-            <th>CUSTOMER NAME</th>
-            <th>REGION</th>
-            <th>{toggleSelected.label}</th>
-          </tr>
-        </thead>
-        <tbody>
-          {filteredData.map((invoice) => {
-            const totalValue = invoice[toggleSelected.key as string];
-            return (
-              <tr key={invoice.id}>
-                <td>#{invoice.id}</td>
-                <td>{invoice.date}</td>
-                <td>{invoice.customer_name}</td>
-                <td>{invoice.region}</td>
-                <td>${totalValue}</td>
-              </tr>
-            );
-          })}
-        </tbody>
-        <tfoot>
-          <tr>
-            <td colSpan={5}>
-              <div id="invoices-table-navigation">
-                <nav aria-label="...">
-                  <ul className="pagination pagination-sm">
-                    {pages.map((page, index) => (
-                      <li
-                        key={index}
-                        className={`page-item ${index === currentPage ? 'active' : ''}`}
-                        onClick={() => setCurrentPage(index)}
-                        aria-current="page">
-                        <span className="page-link">{index + 1}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </nav>
-              </div>
-            </td>
-          </tr>
-        </tfoot>
-      </table>
+      <DataTable data={invoices} structure={structure} />
     </div>
   );
 }

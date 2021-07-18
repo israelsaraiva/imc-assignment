@@ -1,6 +1,6 @@
 @import '../../assets/styles/general';
 
-.invoices-page {
+.customers-page {
   &-top {
     display: flex;
     align-items: center;
@@ -8,7 +8,7 @@
   }
 
   &-title {
-    @include font-body-medium;
+    @include font-body-small;
     font-weight: bold;
     text-transform: capitalize;
   }

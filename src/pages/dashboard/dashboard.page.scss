@@ -19,5 +19,15 @@
 
   &-charts {
     padding: 20px 0;
+
+    .customers-page {
+      border-bottom: 1px solid $input;
+      padding-bottom: 3rem;
+
+      .data-table {
+        height: 350px;
+        overflow-y: auto;
+      }
+    }
   }
 }

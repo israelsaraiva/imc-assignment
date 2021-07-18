@@ -1,0 +1,45 @@
+@import '../../assets/styles/general';
+
+.data-table {
+  margin-top: 2rem;
+  color: $ash;
+
+  table {
+    width: 100%;
+
+    thead {
+      border-bottom: 1px solid $input;
+
+      th {
+        @include font-body-xsmall;
+        font-size: 12px;
+        font-weight: 500;
+        color: $label;
+        padding: 10px 0;
+        text-transform: uppercase;
+      }
+    }
+
+    tbody {
+      tr:hover {
+        background-color: aliceblue;
+      }
+
+      td {
+        @include font-body-small;
+        padding: 15px 0;
+      }
+    }
+
+    tfoot #invoices-table-navigation {
+      display: flex;
+      justify-content: center;
+      padding: 2rem 0;
+      border-top: 1px solid $input;
+
+      .page-item {
+        cursor: pointer;
+      }
+    }
+  }
+}
