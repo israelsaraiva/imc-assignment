@@ -1,0 +1,17 @@
+@import '../../assets/styles/general';
+
+.toggle-selector {
+  @include font-body-xsmall;
+  display: flex;
+  align-items: center;
+  width: auto;
+  border: 1px solid $line;
+  padding: 5px 15px;
+  border-radius: 20px;
+  cursor: pointer;
+  color: $label;
+
+  &-option {
+    
+  }
+}

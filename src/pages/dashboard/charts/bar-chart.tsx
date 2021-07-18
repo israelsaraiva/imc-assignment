@@ -13,12 +13,13 @@ export default function BarChart({ data, keys, indexBy }: BarChartProps) {
       data={data}
       keys={keys}
       indexBy={indexBy}
-      margin={{ top: 50, right: 0, bottom: 50, left: 40 }}
+      margin={{ top: 60, right: 0, bottom: 50, left: 60 }}
       padding={0.3}
       groupMode="grouped"
       valueScale={{ type: 'linear' }}
       indexScale={{ type: 'band', round: true }}
       colors={{ scheme: 'category10' }}
+      enableLabel={false}
       theme={{
         fontFamily: 'Poppins',
         textColor: '#a0a3bd',
@@ -88,7 +89,7 @@ export default function BarChart({ data, keys, indexBy }: BarChartProps) {
           itemTextColor: '#6e7191',
           justify: false,
           translateX: 120,
-          translateY: -38,
+          translateY: -40,
           itemsSpacing: 2,
           itemWidth: 100,
           itemHeight: 20,

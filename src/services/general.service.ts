@@ -1,4 +1,5 @@
 import { configureAxiosInstance } from 'config/axios.config';
+import { BestProductsCategoriesModel } from 'models/best-products-categories.model';
 import { CustomerModel } from 'models/customer.model';
 import { InvoiceModel } from 'models/invoice.model';
 import { ProductModel } from 'models/product.model';
@@ -23,5 +24,9 @@ export default function useGeneralService() {
     return axiosInstance.get<RevenueModel[]>(`revenues/${period}`);
   }
 
-  return { getProducts, getCustomers, getInvoices, getRevenues };
+  function getBestProductsCategories() {
+    return axiosInstance.get<BestProductsCategoriesModel[]>('categories/revenues');
+  }
+
+  return { getProducts, getCustomers, getInvoices, getRevenues, getBestProductsCategories };
 }
