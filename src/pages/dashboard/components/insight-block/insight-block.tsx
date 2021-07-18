@@ -3,15 +3,17 @@ import './insight-block.scss';
 import React from 'react';
 
 type InsightBlockProps = {
-  className?: string;
+  title: string;
+  value: number;
+  label: string;
 };
 
-export default function InsightBlock({ className }: InsightBlockProps) {
+export default function InsightBlock({ title, value, label }: InsightBlockProps) {
   return (
-    <div className={`insight-block ${className}`}>
-      <div className="insight-block-label">Guide Views</div>
-      <div className="insight-block-value">1.240</div>
-      <div className="insight-block-description">Views (7 Days)</div>
+    <div className="insight-block">
+      <div className="insight-block-label">{title}</div>
+      <div className="insight-block-value">{value}</div>
+      <div className="insight-block-description">{label}</div>
     </div>
   );
 }

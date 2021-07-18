@@ -1,5 +1,6 @@
 import { ResponsiveBar } from '@nivo/bar';
 import React from 'react';
+import { isMobileOnly } from 'react-device-detect';
 
 type BarChartProps = {
   data: any;
@@ -67,7 +68,7 @@ export default function BarChart({ data, keys, indexBy }: BarChartProps) {
       axisBottom={{
         tickSize: 5,
         tickPadding: 5,
-        tickRotation: 0,
+        tickRotation: isMobileOnly ? 90 : 0,
         legendPosition: 'middle',
         legendOffset: 32
       }}

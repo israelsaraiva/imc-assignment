@@ -4,7 +4,7 @@
 - [OK] Install most used libraries
 - [OK] Create mock design using Figma
 
-- [OK] Apply responsiveness to the page
+- [OK] Apply responsiveness to the app
 
 - [OK] Bar Chart => present the total revenues per products categories (or total margin, depending
   on switcher value).
@@ -25,9 +25,9 @@
     names and the total revenue (or total margin, depending on switcher value).
 
 - [OK] Add pages navigation
+- [OK] Create a toggle sidebar button for tablet and mobile views
 
 ====== SUGGESTED IMPROVEMENTS =====
 
 - Make just the body of data table scrollable
-- Create a toggle sidebar button for tablet and mobile views
 - Populate insight blocks with real data

@@ -26,7 +26,7 @@ export default function TopBar() {
 
       <button
         type="button"
-        className="btn btn-outline-primary toggle-menu-button"
+        className="btn btn-outline-dark toggle-menu-button"
         onClick={() => toggleSidebar?.()}>
         <i className="fas fa-bars"></i>
       </button>

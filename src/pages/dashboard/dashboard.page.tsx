@@ -9,15 +9,20 @@ import MonthlyCumulativeSection from './sections/monthly-cumulative-section/mont
 import ProductCategorySection from './sections/product-category-section/product-category-section';
 
 export default function DashboardPage() {
-  const insights = [1, 2, 3, 4];
+  const insights = [
+    { title: 'Revenue', value: 1240, label: 'Last Month' },
+    { title: 'Margin', value: 1240, label: 'Last Month' },
+    { title: 'New Customers', value: 1240, label: 'Last (7 Days)' },
+    { title: 'New Invoices', value: 1240, label: 'Last (7 Days)' }
+  ];
 
   return (
     <div className="dashboard-page">
       <TopBar />
 
       <div className="dashboard-page-insights">
-        {insights.map((insight) => (
-          <InsightBlock key={insight} />
+        {insights.map((insight, index) => (
+          <InsightBlock key={index} {...insight} />
         ))}
       </div>
 

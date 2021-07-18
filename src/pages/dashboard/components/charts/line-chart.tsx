@@ -1,5 +1,6 @@
 import { ResponsiveLine, Serie } from '@nivo/line';
 import React from 'react';
+import { isMobileOnly } from 'react-device-detect';
 
 type LineChartProps = {
   data: Serie[];
@@ -13,13 +14,13 @@ export default function LineChart({ data }: LineChartProps) {
       enablePoints={false}
       enableGridX={false}
       enableSlices="x"
-      colors={['#61CDBB', '#C51B7D']}
+      colors={['#61CDBB', '#C51B7D', 'blue']}
       theme={{
         fontFamily: 'Poppins',
         textColor: '#a0a3bd',
         grid: { line: { stroke: '#eff0f6', strokeDasharray: '4 4' } },
         crosshair: { line: { stroke: '#a0a3bd' } },
-        labels: { text: { color: 'red' } },
+        labels: { text: { color: 'red' } }
       }}
       margin={{ top: 30, right: 30, bottom: 50, left: 60 }}
       xScale={{ type: 'point' }}
@@ -31,7 +32,10 @@ export default function LineChart({ data }: LineChartProps) {
         tickSize: 5,
         tickPadding: 5,
         tickRotation: 0,
-        legendOffset: -40,
+        legendOffset: -40
+      }}
+      axisBottom={{
+        tickRotation: isMobileOnly ? 90 : 0
       }}
       pointSize={10}
       pointColor={{ theme: 'background' }}
@@ -60,11 +64,11 @@ export default function LineChart({ data }: LineChartProps) {
               on: 'hover',
               style: {
                 itemBackground: 'rgba(0, 0, 0, .03)',
-                itemOpacity: 1,
-              },
-            },
-          ],
-        },
+                itemOpacity: 1
+              }
+            }
+          ]
+        }
       ]}
     />
   );

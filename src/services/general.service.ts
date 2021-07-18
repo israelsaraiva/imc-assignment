@@ -21,7 +21,7 @@ export default function useGeneralService() {
     return axiosInstance.get<InvoiceModel[]>(`invoices/${invoiceId}`);
   }
 
-  function getRevenues(period: 'weekly' | 'monthly') {
+  function getRevenues(period: string) {
     return axiosInstance.get<RevenueModel[]>(`revenues/${period}`);
   }
 
