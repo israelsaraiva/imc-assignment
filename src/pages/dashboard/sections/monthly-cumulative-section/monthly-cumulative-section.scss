@@ -1,0 +1,12 @@
+.monthly-cumulative-section {
+  &-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &-container {
+    width: 100%;
+    height: 400px;
+  }
+}

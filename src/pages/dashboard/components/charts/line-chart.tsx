@@ -1,9 +1,11 @@
-import { ResponsiveLine } from '@nivo/line';
+import { ResponsiveLine, Serie } from '@nivo/line';
 import React from 'react';
 
-import data from './data';
+type LineChartProps = {
+  data: Serie[];
+};
 
-export default function LineChart() {
+export default function LineChart({ data }: LineChartProps) {
   return (
     <ResponsiveLine
       data={data}
@@ -11,6 +13,7 @@ export default function LineChart() {
       enablePoints={false}
       enableGridX={false}
       enableSlices="x"
+      colors={['#61CDBB', '#C51B7D']}
       theme={{
         fontFamily: 'Poppins',
         textColor: '#a0a3bd',
@@ -18,7 +21,7 @@ export default function LineChart() {
         crosshair: { line: { stroke: '#a0a3bd' } },
         labels: { text: { color: 'red' } },
       }}
-      margin={{ top: 30, right: 0, bottom: 50, left: 40 }}
+      margin={{ top: 30, right: 30, bottom: 50, left: 60 }}
       xScale={{ type: 'point' }}
       yScale={{ type: 'linear', min: 'auto', max: 'auto', stacked: true, reverse: false }}
       yFormat=" >-.2f"
@@ -38,7 +41,7 @@ export default function LineChart() {
       useMesh={true}
       legends={[
         {
-          anchor: 'top',
+          anchor: 'top-left',
           direction: 'row',
           itemTextColor: '#6e7191',
           justify: false,
@@ -46,7 +49,7 @@ export default function LineChart() {
           translateY: -25,
           itemsSpacing: 0,
           itemDirection: 'left-to-right',
-          itemWidth: 80,
+          itemWidth: 150,
           itemHeight: 20,
           itemOpacity: 0.75,
           symbolSize: 12,

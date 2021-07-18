@@ -1,4 +1,10 @@
+@import '../../../../assets/styles/general';
+
 .product-category-section {
+  margin-bottom: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid $input;
+
   &-title {
     display: flex;
     justify-content: space-between;
