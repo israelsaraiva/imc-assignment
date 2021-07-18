@@ -3,6 +3,7 @@
 .dashboard-page-topBar {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   border-bottom: 1px solid $input;
   padding-bottom: 30px;
   flex-wrap: wrap;
@@ -12,48 +13,62 @@
     padding-bottom: 20px;
   }
 
-  .avatar-container {
-    position: relative;
-    width: 60px;
-    height: 60px;
-    border-radius: 50px;
-    border: 2px solid $primary;
+  &-container {
+    display: flex;
+    align-items: center;
 
-    .user-avatar {
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translateX(-50%) translateY(-50%);
-      width: 50px;
-      height: 50px;
-      overflow: hidden;
+    .avatar-container {
+      position: relative;
+      width: 60px;
+      height: 60px;
       border-radius: 50px;
+      border: 2px solid $primary;
 
-      img {
-        width: 100%;
+      .user-avatar {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translateX(-50%) translateY(-50%);
+        width: 50px;
+        height: 50px;
+        overflow: hidden;
+        border-radius: 50px;
+
+        img {
+          width: 100%;
+        }
       }
     }
-  }
 
-  .welcome-message {
-    @include font-body-large;
-    font-weight: bold;
+    .welcome-message {
+      @include font-body-large;
+      font-weight: bold;
 
-    .user-name-mobile {
-      @include font-body-medium;
-      font-weight: 500;
-      display: none;
+      .user-name-mobile {
+        @include font-body-medium;
+        font-weight: 500;
+        display: none;
 
+        @include mobile {
+          display: block;
+        }
+      }
+    }
+
+    .user-name {
+      @include font-body-large;
       @include mobile {
-        display: block;
+        display: none;
       }
     }
   }
 
-  .user-name {
-    @include font-body-large;
-    @include mobile {
-      display: none;
+  .toggle-menu-button {
+    padding: 10px 15px;
+    display: none;
+
+    @include tablet {
+      display: block;
     }
   }
 }

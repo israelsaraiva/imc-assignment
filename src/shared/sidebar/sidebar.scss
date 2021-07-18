@@ -6,15 +6,20 @@
   color: $label;
   border-right: 1px solid $input;
   background-color: $offWhite;
+  transition: width 0.2s ease, opacity 0.2s ease;
 
   @include tablet {
     position: absolute;
     z-index: 999;
     width: 0px;
+    opacity: 0;
     overflow: hidden;
+  }
 
-    &-open {
+  &.open {
+    @include tablet {
       width: 250px;
+      opacity: 1;
     }
   }
 

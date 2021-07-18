@@ -1,6 +1,7 @@
 import './index.scss';
 import 'bootstrap/dist/js/bootstrap.min.js';
 
+import AppProvider from 'providers/app.provider';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
@@ -11,7 +12,9 @@ import reportWebVitals from './reportWebVitals';
 ReactDOM.render(
   <BrowserRouter basename="/">
     <React.StrictMode>
-      <App />
+      <AppProvider>
+        <App />
+      </AppProvider>
     </React.StrictMode>
   </BrowserRouter>,
   document.getElementById('root')

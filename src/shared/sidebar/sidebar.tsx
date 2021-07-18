@@ -3,6 +3,7 @@ import './sidebar.scss';
 import React, { useCallback } from 'react';
 import AppPages from 'pages/pages.enum';
 import { useHistory, useLocation } from 'react-router-dom';
+import { useApp } from 'providers/app.provider';
 
 const menuOptions = [
   {
@@ -26,15 +27,17 @@ const menuOptions = [
 export default function Sidebar() {
   const { push } = useHistory();
   const { pathname } = useLocation();
+  const { sidebarOpen, toggleSidebar } = useApp();
 
   const menuActive = useCallback((option) => pathname.includes(option.page), [pathname]);
 
   function navigateTo(page: AppPages) {
     push(page);
+    toggleSidebar?.();
   }
 
   return (
-    <aside className="app-sidebar">
+    <aside className={`app-sidebar ${sidebarOpen ? 'open' : ''}`}>
       <div className="p-4 fw-bold">MENU</div>
 
       <ul>
