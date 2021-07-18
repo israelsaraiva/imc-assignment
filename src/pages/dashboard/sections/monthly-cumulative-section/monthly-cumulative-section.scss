@@ -1,8 +1,20 @@
+@import '../../../../assets/styles/general';
+
 .monthly-cumulative-section {
   &-title {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+
+    @include mobile {
+      justify-content: center;
+
+      .toggle-selector {
+        margin-top: 1rem;
+      }
+    }
   }
 
   &-container {

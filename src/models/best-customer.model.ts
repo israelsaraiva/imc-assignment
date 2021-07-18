@@ -4,4 +4,5 @@ export interface BestCustomerModel {
   total_revenue: number;
   total_margin: number;
   invoices_count: number;
+  [x: string]: number | string;
 }

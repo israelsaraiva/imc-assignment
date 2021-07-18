@@ -31,7 +31,7 @@ export default function CustomersPage() {
       item.total_margin = Math.round((item.total_margin + Number.EPSILON) * 100) / 100;
     });
 
-    return data;
+    return data.sort((a, b) => Number(b[toggleSelected.key]) - Number(a[toggleSelected.key]));
   }
 
   const structure: DataTableStructure[] = [

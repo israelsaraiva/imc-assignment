@@ -4,10 +4,27 @@
   &-insights {
     margin: 0px;
     border-bottom: 1px solid $input;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
 
-    .insight-block:first-child {
-      padding-left: 0px;
-      border-left: none;
+    .insight-block {
+      width: 25%;
+
+      &:first-child {
+        padding-left: 0px;
+        border-left: none;
+      }
+
+      @include mobile {
+        width: 50%;
+
+        &:first-child {
+          padding-left: 30px;
+          border-left: 1px solid $input;
+        }
+      }
     }
   }
 
@@ -23,6 +40,7 @@
     .customers-page {
       border-bottom: 1px solid $input;
       padding-bottom: 3rem;
+      margin-bottom: 2rem;
 
       .data-table {
         height: 350px;

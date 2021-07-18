@@ -34,15 +34,15 @@ export default function DataTable({ data, structure }: DataTableProps) {
       <table>
         <thead>
           <tr>
-            {structure.map((column) => (
-              <th key={column.header}>{column.header}</th>
+            {structure.map((column, index) => (
+              <th key={index}>{column.header}</th>
             ))}
           </tr>
         </thead>
         <tbody>
-          {filteredData.map((item) => {
+          {filteredData.map((item, index) => {
             return (
-              <tr key={item.id}>
+              <tr key={index}>
                 {structure.map((column, index) => {
                   if (column?.valueFunction) {
                     const value = `${column.beforeValue} ${column.valueFunction(item)}`;

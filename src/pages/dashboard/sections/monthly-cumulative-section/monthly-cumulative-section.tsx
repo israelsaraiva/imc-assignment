@@ -1,22 +1,23 @@
 import './monthly-cumulative-section.scss';
 
+import { Serie } from '@nivo/line';
 import { RevenueModel } from 'models/revenue.model';
-import BarChart from 'pages/dashboard/components/charts/bar-chart';
+import LineChart from 'pages/dashboard/components/charts/line-chart';
 import React, { useEffect, useState } from 'react';
 import useGeneralService from 'services/general.service';
 import ToggleSelector, { ToggleOption } from 'shared/toggle-selector/toggle-selector';
-import { Serie } from '@nivo/line';
-import LineChart from 'pages/dashboard/components/charts/line-chart';
 
 const toggleOptions = [
   { key: 'total_revenue', label: 'Cumulative revenue' },
-  { key: 'total_margin', label: 'Cumulative margin' },
+  { key: 'total_margin', label: 'Cumulative margin' }
 ];
 
 export default function MonthlyCumulativeSection() {
   const generalService = useGeneralService();
 
-  const [productCategoryOption, setProductCategoryOption] = useState<ToggleOption>(toggleOptions[0]);
+  const [productCategoryOption, setProductCategoryOption] = useState<ToggleOption>(
+    toggleOptions[0]
+  );
   const [chartData, setChartData] = useState<Serie[]>([]);
 
   useEffect(() => {
@@ -32,13 +33,13 @@ export default function MonthlyCumulativeSection() {
     const cumulativeRevenueData: Serie = {
       id: 'Cumulative revenue',
       color: 'hsl(295, 70%, 50%)',
-      data: [],
+      data: []
     };
 
     const cumulativeMarginData: Serie = {
       id: 'Cumulative margin',
       color: 'hsl(339, 70%, 50%)',
-      data: [],
+      data: []
     };
 
     data.forEach((item) => {
@@ -53,13 +54,12 @@ export default function MonthlyCumulativeSection() {
   }
 
   return (
-    <div className="product-category-section">
-      <div className="product-category-section-title">
+    <div className="monthly-cumulative-section">
+      <div className="monthly-cumulative-section-title">
         <div className="subtitle">Cumulative Margin & Revenue</div>
-        <ToggleSelector options={toggleOptions} onToggle={setProductCategoryOption} />
       </div>
 
-      <div className="product-category-section-container">
+      <div className="monthly-cumulative-section-container">
         <LineChart data={chartData} />
       </div>
     </div>

@@ -3,7 +3,7 @@ import './insight-block.scss';
 import React from 'react';
 
 type InsightBlockProps = {
-  className: string;
+  className?: string;
 };
 
 export default function InsightBlock({ className }: InsightBlockProps) {

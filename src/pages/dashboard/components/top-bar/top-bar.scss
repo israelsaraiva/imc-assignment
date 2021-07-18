@@ -5,7 +5,12 @@
   align-items: center;
   border-bottom: 1px solid $input;
   padding-bottom: 30px;
+  flex-wrap: wrap;
   color: $ash;
+
+  @include mobile {
+    padding-bottom: 20px;
+  }
 
   .avatar-container {
     position: relative;
@@ -33,9 +38,22 @@
   .welcome-message {
     @include font-body-large;
     font-weight: bold;
+
+    .user-name-mobile {
+      @include font-body-medium;
+      font-weight: 500;
+      display: none;
+
+      @include mobile {
+        display: block;
+      }
+    }
   }
 
   .user-name {
     @include font-body-large;
+    @include mobile {
+      display: none;
+    }
   }
 }

@@ -15,19 +15,19 @@ export default function DashboardPage() {
     <div className="dashboard-page">
       <TopBar />
 
-      <div className="dashboard-page-insights row">
+      <div className="dashboard-page-insights">
         {insights.map((insight) => (
-          <InsightBlock key={insight} className="col-sm-3" />
+          <InsightBlock key={insight} />
         ))}
       </div>
 
       <div className="dashboard-page-charts">
         <div className="row">
-          <div className="col-md-7">
+          <div className="col-lg-7">
             <ProductCategorySection />
           </div>
-          <div className="col-md-1" />
-          <div className="col-md-4">
+          <div className="col-lg-1" />
+          <div className="col-lg-4">
             <CustomersPage />
           </div>
         </div>
