@@ -1,4 +1,4 @@
-export interface invoiceLineModel {
+export interface InvoiceLineModel {
   product_id: number;
   product_name: string;
   unit_price: number;
@@ -15,5 +15,6 @@ export interface InvoiceModel {
   total_invoice: number;
   total_margin: number;
   region: string;
-  invoice_lines: invoiceLineModel[];
+  invoice_lines: InvoiceLineModel[];
+  [key: string]: number | string | Date | InvoiceLineModel[];
 }

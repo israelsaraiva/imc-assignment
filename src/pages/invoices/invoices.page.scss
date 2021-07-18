@@ -1,6 +1,12 @@
 @import '../../assets/styles/general';
 
 .invoices-page {
+  &-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
   &-title {
     @include font-body-medium;
     font-weight: bold;
@@ -21,6 +27,7 @@
         font-weight: 500;
         color: $label;
         padding: 10px 0;
+        text-transform: uppercase;
       }
     }
 
@@ -28,6 +35,17 @@
       td {
         @include font-body-small;
         padding: 15px 0;
+      }
+    }
+
+    tfoot #invoices-table-navigation {
+      display: flex;
+      justify-content: center;
+      padding: 2rem 0;
+      border-top: 1px solid $input;
+
+      .page-item {
+        cursor: pointer;
       }
     }
   }

@@ -8,15 +8,15 @@ import { RevenueModel } from 'models/revenue.model';
 export default function useGeneralService() {
   const axiosInstance = configureAxiosInstance();
 
-  function getProducts(productId?: number) {
+  function getProducts(productId: number | string = '') {
     return axiosInstance.get<ProductModel[]>(`products/${productId}`);
   }
 
-  function getCustomers(customerId?: number) {
+  function getCustomers(customerId: number | string = '') {
     return axiosInstance.get<CustomerModel[]>(`customers/${customerId}`);
   }
 
-  function getInvoices(invoiceId?: number) {
+  function getInvoices(invoiceId: number | string = '') {
     return axiosInstance.get<InvoiceModel[]>(`invoices/${invoiceId}`);
   }
 
