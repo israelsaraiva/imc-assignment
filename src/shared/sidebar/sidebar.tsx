@@ -1,23 +1,37 @@
 import './sidebar.scss';
 
-import React from 'react';
+import React, { useCallback, useState } from 'react';
+import AppPages from 'pages/pages.enum';
+import { useHistory, useLocation } from 'react-router-dom';
+
+const menuOptions = [
+  {
+    active: true,
+    label: 'Dashboard',
+    fortAwesomeIconClass: 'fa-tachometer-alt',
+    page: AppPages.Dashboard,
+  },
+  {
+    label: 'Invoices',
+    fortAwesomeIconClass: 'fa-file-invoice-dollar',
+    page: AppPages.Invoices,
+  },
+  {
+    label: 'Customers',
+    fortAwesomeIconClass: 'fa-users',
+    page: AppPages.Customers,
+  },
+];
 
 export default function Sidebar() {
-  const menuOptions = [
-    {
-      active: true,
-      label: 'Dashboard',
-      fortAwesomeIconClass: 'fa-tachometer-alt',
-    },
-    {
-      label: 'Products',
-      fortAwesomeIconClass: 'fa-box',
-    },
-    {
-      label: 'Customers',
-      fortAwesomeIconClass: 'fa-users',
-    },
-  ];
+  const { push } = useHistory();
+  const { pathname } = useLocation();
+
+  const menuActive = useCallback((option) => pathname.includes(option.page), [pathname]);
+
+  function navigateTo(page: AppPages) {
+    push(page);
+  }
 
   return (
     <aside className="app-sidebar">
@@ -25,7 +39,7 @@ export default function Sidebar() {
 
       <ul>
         {menuOptions.map((option, index) => (
-          <li key={index} className={option.active ? 'option-active' : ''}>
+          <li key={index} className={menuActive(option) ? 'option-active' : ''} onClick={() => navigateTo(option.page)}>
             <i className={`fas ${option.fortAwesomeIconClass}`} />
             <div className="option-label flex-fill">{option.label}</div>
           </li>

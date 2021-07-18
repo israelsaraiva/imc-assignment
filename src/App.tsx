@@ -1,9 +1,11 @@
 import './App.scss';
 
+import AppRoutes from 'config/app.routes';
+import AppPages from 'pages/pages.enum';
 import React from 'react';
+import { Redirect, Switch } from 'react-router-dom';
 
 import Sidebar from './shared/sidebar/sidebar';
-import DashboardPage from './pages/dashboard/dashboard';
 
 function App() {
   return (
@@ -11,7 +13,10 @@ function App() {
       <Sidebar />
 
       <div className="app-container-body flex-fill">
-        <DashboardPage />
+        <Switch>
+          {AppRoutes()}
+          <Redirect path="*" to={AppPages.Dashboard} />
+        </Switch>
       </div>
     </div>
   );

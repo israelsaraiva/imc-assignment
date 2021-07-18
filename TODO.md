@@ -14,3 +14,4 @@
   => List of the 15 latest invoices by date, with id, date, costumer name, region, invoice total (or total margin, depending on switcher value).
   => List of our best customers, with their name, their region, the number of invoices at their names and the total revenue (or total margin, depending on switcher value).
 - Populate insight blocks with real data
+- Add pages navigation

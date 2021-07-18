@@ -41,7 +41,7 @@ export default function LineChart({ data }: LineChartProps) {
       useMesh={true}
       legends={[
         {
-          anchor: 'top-left',
+          anchor: 'top',
           direction: 'row',
           itemTextColor: '#6e7191',
           justify: false,
