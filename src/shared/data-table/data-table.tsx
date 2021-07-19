@@ -39,7 +39,9 @@ export default function DataTable({ data, structure, loading }: DataTableProps) 
         <thead>
           <tr>
             {structure.map((column, index) => (
-              <th key={index}>{column.header}</th>
+              <th key={index} data-testid="header-element">
+                {column.header}
+              </th>
             ))}
           </tr>
         </thead>

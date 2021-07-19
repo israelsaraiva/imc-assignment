@@ -26,6 +26,7 @@ export default function TopBar() {
 
       <button
         type="button"
+        data-testid="toggle-menu-button"
         className="btn btn-outline-dark toggle-menu-button"
         onClick={() => toggleSidebar?.()}>
         <i className="fas fa-bars"></i>

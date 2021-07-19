@@ -44,6 +44,7 @@ export default function Sidebar() {
         {menuOptions.map((option, index) => (
           <li
             key={index}
+            data-testid="sidebar-menu-option"
             className={menuActive(option) ? 'option-active' : ''}
             onClick={() => navigateTo(option.page)}>
             <i className={`fas ${option.fortAwesomeIconClass}`} />
