@@ -7,6 +7,7 @@ import React, { useEffect, useState } from 'react';
 import useGeneralService from 'services/general.service';
 import Spinner from 'shared/spinner/spinner';
 import ToggleSelector, { ToggleOption } from 'shared/toggle-selector/toggle-selector';
+import InputSelector from 'shared/input-selector/input-selector';
 
 const toggleOptions = [
   { key: 'monthly', label: 'Monthly' },
@@ -63,7 +64,7 @@ export default function MonthlyCumulativeSection() {
     <div className="monthly-cumulative-section">
       <div className="monthly-cumulative-section-title">
         <div className="subtitle">Cumulative Margin & Revenue</div>
-        <ToggleSelector options={toggleOptions} onToggle={setPeriod} />
+        <InputSelector options={toggleOptions} selected={period} onSelectOption={setPeriod} />
       </div>
 
       <div className="monthly-cumulative-section-container">

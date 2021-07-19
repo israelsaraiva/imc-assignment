@@ -31,8 +31,7 @@ export default function DashboardPage() {
           <div className="col-lg-7">
             <ProductCategorySection />
           </div>
-          <div className="col-lg-1" />
-          <div className="col-lg-4">
+          <div className="col-lg-5">
             <CustomersPage />
           </div>
         </div>
